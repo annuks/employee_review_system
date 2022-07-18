@@ -1,12 +1,14 @@
 const express = require ('express');
 const app = express();
 const PORT = 8000;
+//const db = require('./config/mongoose');
 
 //adding ejs as view engine
 const ejs = require ('ejs');
 const path = require ('path');
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'/views'));
+
 
 //settig route
 app.use('/',require('./routes'));

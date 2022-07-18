@@ -4,14 +4,14 @@ const express = require ('express');
 const router = express.Router();
 
 // setup home controller
-const homeController = require ('../controllers/homeController');
-router.get('/', homeController.home);
-//  router.use("/admin",require('./admin'));
-// router.use('/admin',require('./admin'));   
+const loginController = require ('../controllers/loginController');
+router.get('/',loginController.login);
 
-// router.get('/',(req,res)=>{
-// res.send("Hello ... This is Home Page");
-// }); 
+router.use("/",require('./admin'));
+router.use('/',require('./employee'));  
+
+
+
 
 
 
