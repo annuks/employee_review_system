@@ -10,9 +10,13 @@
   "author": "Annu Kumar Singh",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.6",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
+    "express-ejs-layouts": "^2.5.1",
     "mongoose": "^6.4.4",
-    "nodemon": "^2.0.19"
+    "node-sass-middleware": "^1.0.1",
+    "nodemon": "^2.0.19",
+    "saas": "^1.0.0"
   }
 }

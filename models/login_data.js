@@ -18,7 +18,7 @@ const loginSchema = new mogoose.Schema({
         min: [3, 'Minimum Three digit is required'],
         max:6
     },
-    type:{
+    usertype:{
         logintype:String,
         required:true,
         enum:['EMPLOYEE','ADMIN'],
