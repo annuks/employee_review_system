@@ -23,7 +23,7 @@ const userSchema = new mogoose.Schema({
     type: String,
     enum: ["EMPLOYEE", "ADMIN"],
     default: "EMPLOYEE",
-    // required: true,
+    //required: true,
   },
 },{
     timeseries: true,

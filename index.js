@@ -5,7 +5,6 @@ const PORT = 8000;
 //adding ejs as view engine
 const ejs = require("ejs");
 const path = require("path");
-
 const db = require ('./config/mongoose');
 
 //for creating session cookie
@@ -13,32 +12,24 @@ const session = require("express-session");
 const passport = require('passport');
 const passportLocal = require ('./config/passport-local-strategy');
 const cookieParser =require('cookie-parser');
-
-app.use(
-  session({
-    name: "emp-review-sys",
-
-    //to do change the secret before deployment in production mode
-    secret: "random",
-    saveUninitialized: false,
-    resave: false,
-    cookie: {
-      maxAge: 1000 * 60 * 100,
-    },
-  })
-);
-app.use(passport.initialize());
-app.use(passport.session());
-
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "/views"));
-//adding express layout for creating partials
-const expressLayouts = require("express-ejs-layouts");
+const flash = require("connect-flash");
+const customMware = require('./config/middleware');
 
 // using saas as middleware
 const sassMiddleware = require("node-sass-middleware");
-
 // scss middleware
+//const MongoStore = require('connect-mongo')(session);
+//adding express layout for creating partials
+const expressLayouts = require("express-ejs-layouts");
+
+
+
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "/views"));
+
+
+
+
 app.use(
   sassMiddleware({
     src: "./assets/scss",
@@ -54,6 +45,36 @@ app.use(express.static("./assets"));
 app.set("layout extractStyles", true),
   app.set("layout extractScripts", true),
   app.use(express.urlencoded());
+
+//mongo store is used to create the session cookie in datbase
+app.use(session({
+  name: 'codeial',
+  // need to change before deployment
+  secret: 'blahsomething',
+  saveUninitialized: false,
+  resave: false,
+  cookie: {
+      maxAge: (1000 * 60 * 100)
+  },
+  // store: new MongoStore(
+  //     {
+  //         mongooseConnection: db,
+  //         autoRemove: 'disabled'
+      
+  //     },
+  //     function(err){
+  //         console.log(err ||  'connect-mongodb setup ok');
+  //     }
+  // )
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(passport.setAuthenticatedUser)
+
+app.use(flash());
+app.use(customMware.setFlash);
+
 //app.use(cookieParser);
 
 //settig route

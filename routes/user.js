@@ -4,7 +4,7 @@ const userController = require("../controllers/userController");
 const passport = require("passport");
 
 //using passport as  middleware to authnticate
-router.post("/createSession",
+router.post("/createsession",
   passport.authenticate("local", { failureRedirect: "/user/sign_in" }),
   userController.createSession
 );

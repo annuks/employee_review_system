@@ -16,7 +16,7 @@ module.exports.sign_in = (req, res) => {
 module.exports.sign_up = (req, res) => {
 
   if (req.isAuthenticated()) {
-    res.redirect("/user/employee");
+   return res.redirect("/user/employee");
   }
   return res.render("sign_up", {
     title: "ERS || Sign_up"
@@ -27,6 +27,7 @@ module.exports.sign_up = (req, res) => {
 
 module.exports.create = (req, res) => {
   if (req.body.password != req.body.confirm_password) {
+    req.flash('error','Passwords do not match');
     return res.redirect("back");
   }
 
@@ -38,7 +39,7 @@ module.exports.create = (req, res) => {
     if (!user) {
       User.create(req.body, function (err, user) {
         if (err) {
-          console.log("Error in finding user in sign up");
+          console.log("Error in signing up");
           return;
         }
         return res.redirect("/user/sign_in");
@@ -49,7 +50,13 @@ module.exports.create = (req, res) => {
   });
 };
 
-module.exports.createSession = async (req, res) => {
-  //return res.send("Login");
+module.exports.createSession =  (req, res) => {
+  return res.redirect("/employee");
+  req.flash("success", "Logged in Successfully");
+};
+
+module.exports.destroySession =  (req, res) => {
+  req.logout();
   return res.redirect("/");
+  req.flash("success", "Logged out Successfully");
 };
