@@ -1,10 +1,15 @@
-//connection between mongodb and mongoose
-const mongoose = require ('mongoose');
-const db = mongoose.Connection();
+const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/employee_review_system');
-db.on('error',console.error.bind(console,'Error in connection with Database'));
+
+const db = mongoose.connection;
+
+db.on('error', console.error.bind(console, "Error connecting to MongoDB"));
+
+
 db.once('open', function(){
-    console.log('Connection Succesfull with Mongo Database:-:')
+    console.log('Connection Successfull with MongoDB ::');
 });
+
+
 module.exports = db;

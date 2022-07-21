@@ -1,9 +1,11 @@
 header {
-  color: #fff; }
+  color: #fff;
+  margin-bottom: 90px; }
   header nav {
+    position: fixed;
     height: 70px;
     width: 100%;
-    margin: 0%;
+    top: 0;
     background-color: #393e467d; }
     header nav h1 {
       margin: 0;
