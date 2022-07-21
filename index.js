@@ -18,7 +18,7 @@ const customMware = require('./config/middleware');
 // using saas as middleware
 const sassMiddleware = require("node-sass-middleware");
 // scss middleware
-//const MongoStore = require('connect-mongo')(session);
+const MongoStore = require('connect-mongo');
 //adding express layout for creating partials
 const expressLayouts = require("express-ejs-layouts");
 
@@ -54,18 +54,17 @@ app.use(session({
   saveUninitialized: false,
   resave: false,
   cookie: {
-      maxAge: (1000 * 60 * 100)
+      maxAge: (1000 * 60 * 1000)
   },
-  // store: new MongoStore(
-  //     {
-  //         mongooseConnection: db,
-  //         autoRemove: 'disabled'
-      
-  //     },
-  //     function(err){
-  //         console.log(err ||  'connect-mongodb setup ok');
-  //     }
-  // )
+  store: MongoStore.create(
+    {
+      mongoUrl : 'mongodb://localhost/employee_review_system',
+      autoRemove: "disabled",
+    },
+    function (err) {
+      console.log(err || "coneection with mongo-db setup ok");
+    }
+  ),
 }));
 
 app.use(passport.initialize());

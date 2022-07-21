@@ -1,12 +1,25 @@
-header {
-  color: #fff;
-  margin-bottom: 90px; }
-  header nav {
-    position: fixed;
-    height: 70px;
-    width: 100%;
-    top: 0;
-    background-color: #393e467d; }
-    header nav h1 {
-      margin: 0;
-      text-decoration: line-through; }
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+header nav {
+  font-family: 'Ubuntu', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  background: #fff;
+  color: #393e467d;
+  box-shadow: 1px 1px 1px 2px #006cb6; }
+  header nav .logo #img {
+    width: 140px; }
+  header nav .logo p {
+    width: 140px;
+    margin: 5px;
+    font-size: 1.4rem;
+    font-weight: bold; }
+  header nav .list_item ul {
+    display: flex;
+    list-style: none;
+    margin-top: 30px; }
+    header nav .list_item ul li {
+      margin-right: 10px; }
+  header nav a {
+    color: #006cb6;
+    text-decoration: none; }

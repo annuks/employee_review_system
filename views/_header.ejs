@@ -2,6 +2,35 @@
     <link rel="stylesheet" href="/css/header.css">
 
     <nav>
-        <h3>Navigation Bar</h3>
-    </nav>
+        <div class="logo">
+            <img src="/images/logo.png" alt="logo" id="img" />
+            <p>
+                <a href='/'>
+                </a>
+            </p>
+        </div>
+
+
+    <div class="list_item">
+        <ul>
+            <% if (locals.user){ %>
+            <li>
+                <a href="/user/employee"><%= user.name %></a>
+            </li>
+            <li>
+                <a href="/user/sign_out">Sign Out</a>
+            </li>
+            <% }else{ %>
+            <li>
+                <a href="/user/sign_in">Sign In</a>
+            </li>
+            <li>
+                <a href="/user/sign_up">Sign Up</a>
+            </li>
+    
+            <% } %>
+        </ul>
+    </div>
+
+</nav>
 </header>

@@ -6,12 +6,13 @@ passport.use(
   new localStrategy(
     {
       usernameField: "email",
+      passReqToCallback: true,
     },
-    function (email, password, done) {
+    function (req,email, password, done) {
       //finding user to establish identity
-     User.findOne({ email: email }, function (err, user) {
+     User.findOne({ email:email }, function (err, user) {
         if (err) {
-          console.log("Error");
+          req.flash('success','User  not found')
           return done(err);
         }
         //if user not found or password is incorrect
