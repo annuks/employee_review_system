@@ -1,39 +1,32 @@
-<html>
-    <head>
-        <title>
-            Sign In 
-        </title>
-        <link rel="stylesheet" href="sign_up.css">
-        
-    </head>
-    <body>
-        <div class="container">
-            <h1>Sign Up</h1>
-            <form action="/user/create" method="post" >
-
-        <div class="form-control">
-                <input type="text" name="name"required />
-                <label>Your Name</label>
-        </div>       
-
-        <div class="form-control">
-        <input type="text" name="email" required />
-        <label>Your E-Mail</label>
-    </div>
-    
-        <div class="form-control">
-        <input type="password" name="password" required />
-        <label>Your Password </label>
-    </div>
-    <div class="form-control">
-        <input type="text" name="confirm_password" required />
-        <label>Confirm Password</label>
-    </div>
-    <button class="btn" name="submit" >Submit</button>
-    <p class="text">Alredy have an account?
-        <a href="sign_in.html">Sign In</a>
-    </p>
-    </form>
+<!-- Section: Design Block -->
+<section class="">
+    <!-- Jumbotron -->
+    <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+      <div class="container">
+        <div class="row gx-lg-5 align-items-center">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <h2 class="display-3 -5fw-bold ls-tight">
+              Employee <br />
+              <span class="text-primary">Feedback</span>
+            </h2>
+            <img src="/images/poster.jpg" width="100%">
+          </div>
+  
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <div class="card">
+              <div class="card-body py-5 px-md-5">
+                <h2 class="mb-4">Employee Registration</h2>
+                <%- include('_employeeRegister') %>
+                <div style="width: 99%;display:flex;justify-content: space-between;">
+                    <div>Already have Account ?</div>
+                    <div><a href="/user/sign_in">Sign in</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </body>
-</html>
+      </div>
+    </div>
+    <!-- Jumbotron -->
+  </section>
+  <!-- Section: Design Block -->

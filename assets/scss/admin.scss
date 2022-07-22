@@ -1,0 +1,48 @@
+#main-container{
+    #title{
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0px;
+        h2{
+            color: #91c73e;
+        }
+    }
+
+    #register-new-employee{
+        position: fixed;
+        // display: none;
+        overflow: hidden;
+        height: 0;
+        transition: ease-in-out 0.3s;
+        background: whitesmoke;
+        z-index: 5;
+        border-radius: 10px;
+        right: 0;
+        top: 80px;
+        #regsiter-title{
+            margin: 5px;
+            h2{
+                color: #006cb6;
+            }
+        }
+        #register-container{
+            margin: 5px;
+        }
+    }
+  
+    #employee-list-container{
+        overflow: auto;
+        #table_id{
+            margin: 2px;
+            width: 99% !important;
+            thead{
+                tr{
+                    th{
+                        color: #006cb6;
+                    }
+                }
+            }
+        }
+    }
+  
+}

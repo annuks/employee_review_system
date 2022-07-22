@@ -1,10 +1,98 @@
-<!DOCTYPE html>
-<head>
-    <title>
-        <%= title %>
-    </title>
-</head>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css"
+/>
+<link rel="stylesheet" href="/css/admin.css" />
+
 <body>
-    <h1> Admin Logged in :ERS</h1>
+  <div id="main-container">
+    <div id="title">
+      <h2>Employees List</h2>
+      <div>
+        Add New Employee
+        <button class="btn btn-outline-info" onclick="openRegister()">+</button>
+      </div>
+    </div>
+
+    <div id="register-new-employee">
+        <div id="regsiter-title">
+          <button class="btn btn-outline-danger float-end" onclick="closeRegister()">X</button>
+          <h2>Register</h2>
+        </div>
+        <hr />
+        <div id="register-container">
+          <%- include('_employeeRegister') %>
+        </div>
+      </div>
+
+    <!-- Employee List Container -->
+    <div id="employee-list-container">
+      <!-- creating table using datatable.net library -->
+      <table id="table_id" class="display">
+        <thead>
+          <tr>
+            <th>Sn.</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Modify</th>
+          </tr>
+        </thead>
+        <!-- table body -->
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><a href="/employee/345">Annu Kumar Singh</a></td>
+            <td>annu@gmail.com</td>
+            <td>HR</td>
+            <td><button>Edit</button></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/employee/123">Ankit Singh</a></td>
+            <td>akit@gmail.com</td>
+            <td>Bhedua</td>
+            <td><button>Edit</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </body>
-</html>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"
+></script>
+<script
+  type="text/javascript"
+  charset="utf8"
+  src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"
+></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $("#table_id").DataTable({
+      dom: "Blfrtip",
+      lengthMenu: [
+        [10, 25, 50, -1],
+        [10, 25, 50, "All"],
+      ],
+      buttons: ["csv"],
+    });
+  });
+</script>
+<script  src="/js/admin.js"></script>

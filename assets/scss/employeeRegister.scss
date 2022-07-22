@@ -1,0 +1,15 @@
+#form-container {
+  form {
+    div {
+      display: flex;
+      justify-content: space-between;
+      margin: 5px;
+      input {
+        width: auto;
+      }
+      select {
+        width: inherit;
+      }
+    }
+  }
+}

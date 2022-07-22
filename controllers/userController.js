@@ -1,11 +1,16 @@
 const User = require("../models/user");
+const Employee = require("../models/employee");
 const fs = require("fs");
 const path = require("path");
 
 // refering to signin page
 module.exports.sign_in = (req, res) => {
   if (req.isAuthenticated()) {
-    return res.redirect("/user/sign_in");
+    if(req.user.admin === true){
+      return res.redirect("/admin");
+    }else{
+      return res.redirect("/employee");
+    }
   }
   return res.render("sign_in", {
     title: "ERS|Sign_In"
@@ -30,18 +35,30 @@ module.exports.create = (req, res) => {
     req.flash('error','Passwords do not match');
     return res.redirect("back");
   }
-
   User.findOne({ email: req.body.email }, function (err, user) {
     if (err) {
       console.log("Error in finding user in sign up");
       return;
     }
     if (!user) {
-      User.create(req.body, function (err, user) {
+      User.create({
+        name : req.body.name,
+        email : req.body.email,
+        password: req.body.password
+      }, function (err, user) {
         if (err) {
           console.log("Error in signing up");
           return;
         }
+        Employee.create({
+          employee : user._id,
+          department : req.body.department,
+          joiningDate : req.body.joining,
+          gender : req.body.gender
+        },(err,employe)=>{
+          user.detail = employe._id;
+          user.save;
+        })
         return res.redirect("/user/sign_in");
       });
     } else {
@@ -52,7 +69,11 @@ module.exports.create = (req, res) => {
 
 module.exports.createSession =  (req, res) => {
   req.flash("success", "Logged in Successfully");
-  return res.redirect("/employee");
+  if(req.user.admin === true){
+    return res.redirect("/admin");
+  }else{
+    return res.redirect("/employee");
+  }
  
 };
 

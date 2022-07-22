@@ -19,14 +19,15 @@ const userSchema = new mogoose.Schema({
     min: [3, "Minimum Three digit is required"],
     max: 6,
   },
-  usertype: {
-    type: String,
-    enum: ["EMPLOYEE", "ADMIN"],
-    default: "ADMIN",
-    //required: true,
+  admin : {
+    type : Boolean,
+    default : false
   },
+  detail : {
+    type : mogoose.Schema.Types.ObjectId,
+    ref : 'Employee'
+  }
 },{
-    timeseries: true,
     timestamps: true
 });
 const User = mogoose.model("User", userSchema);

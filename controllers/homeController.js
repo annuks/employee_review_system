@@ -1,6 +1,7 @@
-module.exports.home = (req,res)=>{
-return res.render('home',{
-    title: "Home Login Page" });
-
-
-} 
+module.exports.home = (req, res) => {
+  if (req.user.admin === true) {
+    return res.redirect("/admin");
+  } else {
+    return res.redirect("/employee");
+  }
+};

@@ -1,0 +1,31 @@
+#main-container #title {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0px; }
+  #main-container #title h2 {
+    color: #91c73e; }
+
+#main-container #register-new-employee {
+  position: fixed;
+  overflow: hidden;
+  height: 0;
+  transition: ease-in-out 0.3s;
+  background: whitesmoke;
+  z-index: 5;
+  border-radius: 10px;
+  right: 0;
+  top: 80px; }
+  #main-container #register-new-employee #regsiter-title {
+    margin: 5px; }
+    #main-container #register-new-employee #regsiter-title h2 {
+      color: #006cb6; }
+  #main-container #register-new-employee #register-container {
+    margin: 5px; }
+
+#main-container #employee-list-container {
+  overflow: auto; }
+  #main-container #employee-list-container #table_id {
+    margin: 2px;
+    width: 99% !important; }
+    #main-container #employee-list-container #table_id thead tr th {
+      color: #006cb6; }

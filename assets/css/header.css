@@ -1,25 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
-header nav {
-  font-family: 'Ubuntu', sans-serif;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 10px;
-  background: #fff;
-  color: #393e467d;
-  box-shadow: 1px 1px 1px 2px #006cb6; }
-  header nav .logo #img {
-    width: 140px; }
-  header nav .logo p {
-    width: 140px;
-    margin: 5px;
-    font-size: 1.4rem;
-    font-weight: bold; }
-  header nav .list_item ul {
+header {
+  margin-bottom: 100px; }
+  header nav {
+    font-family: 'Ubuntu', sans-serif;
     display: flex;
-    list-style: none;
-    margin-top: 30px; }
-    header nav .list_item ul li {
-      margin-right: 10px; }
-  header nav a {
-    color: #006cb6;
-    text-decoration: none; }
+    justify-content: space-between;
+    padding: 0 10px;
+    background: #fff;
+    color: #393e467d;
+    position: fixed;
+    top: 0;
+    box-shadow: 1px 1px 1px 2px #006cb6;
+    width: 100%; }
+    header nav #brand {
+      display: flex; }
+      header nav #brand #logo {
+        margin-top: 5px; }
+        header nav #brand #logo img {
+          width: 50px; }
+      header nav #brand h3 {
+        color: #91c640;
+        margin-top: 24px; }
+        header nav #brand h3 span {
+          color: #006cb6; }
+    header nav .list_item ul {
+      display: flex;
+      list-style: none;
+      margin-top: 30px; }
+      header nav .list_item ul li {
+        margin-right: 10px; }
+    header nav a {
+      color: #006cb6;
+      text-decoration: none; }

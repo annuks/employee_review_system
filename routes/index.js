@@ -2,10 +2,11 @@
 
 const express = require ('express');
 const router = express.Router();
+const passport = require('passport')
 
 // setup home controller
 const homeController = require ('../controllers/homeController');
-router.get('/',homeController.home);
+router.get('/',passport.checkAuthentication,homeController.home);
 
 router.use('/admin',require('./admin'));
 router.use('/employee',require('./employee'));
