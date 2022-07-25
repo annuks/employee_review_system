@@ -19,6 +19,7 @@
     text-align: center;
     margin: 10px; }
   #main-container #employee-review-form-container #review-form {
+    display: none;
     background: lavender;
     padding: 25px; }
 
@@ -47,6 +48,21 @@
           color: #006cb6; }
           #main-container #performance-view-container .performance-box .emp-detail .other .created-by span {
             color: #375f7f; }
+
+#main-container #assigningReview {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  width: 99%;
+  background: whitesmoke;
+  top: 80px;
+  left: 0px;
+  border-radius: 10px;
+  border: solid 4px #006cb6;
+  margin: 5px;
+  padding: 6px;
+  height: 490px;
+  overflow: auto; }
 
 .rating {
   display: flex;

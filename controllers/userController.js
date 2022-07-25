@@ -3,7 +3,7 @@ const Employee = require("../models/employee");
 const fs = require("fs");
 const path = require("path");
 
-// refering to signin page
+// controller action for refering to sign in page
 module.exports.sign_in = (req, res) => {
   if (req.isAuthenticated()) {
     if(req.user.admin === true){
@@ -17,7 +17,7 @@ module.exports.sign_in = (req, res) => {
   });
 };
 
-//rendering sign_up page
+//controller action for rendering sign_up page
 module.exports.sign_up = (req, res) => {
 
   if (req.isAuthenticated()) {
@@ -28,7 +28,7 @@ module.exports.sign_up = (req, res) => {
   });
 };
 
-//getting signup data
+//controller action for creating and getting signup data
 
 module.exports.create = (req, res) => {
   if (req.body.password != req.body.confirm_password) {
@@ -67,7 +67,7 @@ module.exports.create = (req, res) => {
     }
   });
 };
-
+// controller action for creating session for authentication 
 module.exports.createSession =  (req, res) => {
   req.flash("success", "Logged in Successfully");
   if(req.user.admin === true){
@@ -77,7 +77,7 @@ module.exports.createSession =  (req, res) => {
   }
  
 };
-
+// controller action for signing out 
 module.exports.destroySession =  (req, res) => {
   req.logout(()=>{
     req.flash("success", " You have been Logged out");  

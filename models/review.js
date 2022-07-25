@@ -1,6 +1,5 @@
+// creating schema for review and its related operations
 const mongoose = require("mongoose");
-
-
 const reviewSchema = new mongoose.Schema({
   teamwork: {
     type: Number,
@@ -37,7 +36,15 @@ const reviewSchema = new mongoose.Schema({
   createdBy:{
     type : mongoose.Schema.Types.ObjectId,
     ref : 'User'
-  }
+  },
+  assignTo:[{
+    type : mongoose.Schema.Types.ObjectId,
+    ref : 'Employee',
+  }],
+  feedback : [{
+    type : mongoose.Schema.Types.ObjectId,
+    ref : 'Feedback',
+  }]
 });
 const Review = mongoose.model("Review", reviewSchema);
 module.exports = Review;

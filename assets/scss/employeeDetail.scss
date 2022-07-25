@@ -28,6 +28,7 @@
             margin: 10px;
         }
         #review-form{
+			display: none;
             background: lavender;
             padding: 25px;
         }
@@ -65,6 +66,21 @@
 			}
         }
     }
+	#assigningReview{
+		display: none;
+		position: fixed;
+		z-index: 10;
+		width: 99%;
+		background: whitesmoke;
+		top: 80px;
+		left: 0px;
+		border-radius: 10px;
+		border: solid 4px #006cb6;
+		margin: 5px;
+		padding: 6px;
+		height: 490px;
+		overflow: auto;
+	}
 }
 .rating {
 	display: flex;

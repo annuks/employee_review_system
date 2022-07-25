@@ -1,3 +1,4 @@
+//creating schema for employee and related data
 const mongoose = require("mongoose");
 
 const employeeSchema = new mongoose.Schema(
@@ -18,6 +19,10 @@ const employeeSchema = new mongoose.Schema(
         enum : ['male','female','other']
     },
     reviews:[{
+      type : mongoose.Schema.Types.ObjectId,
+    ref : 'Review',
+    }],
+    assignedMe:[{
       type : mongoose.Schema.Types.ObjectId,
     ref : 'Review',
     }]

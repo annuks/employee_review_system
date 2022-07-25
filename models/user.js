@@ -1,6 +1,6 @@
+
+//creating schema for employee user type data
 const mongoose = require("mongoose");
-
-
 const userSchema = new mongoose.Schema({
   name: {
     type: String,

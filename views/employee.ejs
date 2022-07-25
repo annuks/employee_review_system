@@ -1,15 +1,101 @@
-<!DOCTYPE html>
-<head>
-    <title>
-        <%= title %>
-    </title>
-</head>
+<link rel="stylesheet" href="/css/employee.css" />
 <body>
-    <h1>Employee :Dashboard: :ERS</h1>
+    <div id="main-container">
+        <div id="employee-data-display">
+            <h2>Employee Dashboard</h2>
 
-    <%=user.name %><br>
-    <%=user.email %><br>
-   Designation: <%=user.usertype %><br>
-    <!-- <%=user._id%> -->
+            <%=employee.name %><br>
+            <%=employee.email%><br>
+            <%=employee.detail.gender%><br>
+            <%=employee.detail.department%><br>
+            <%=employee.detail.joiningDate%><br>
+        </div>
+        <div id="review-feedback-container">
+            <h3>Performances</h3>
+            <% for(review of employee.detail.assignedMe) { %>
+            <div class="performance-box">
+                <div class="emp-detail">
+                    <div><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="profile" width="100px"></div>
+                    <div class="detail">
+                        <span>Name : </span><%=employee.name %><br>
+                        <span>Email :</span> <%=employee.email %><br>
+                        <span>Gender :</span> <%=employee.detail.gender %><br>
+                        <span>Department :</span> <%=employee.detail.department%><br>
+                    </div>
+                    <div class="other">
+                        <div class="created-by">
+                            <span>Created By :</span> Admin<br>
+                            <span>On :</span>12 July , 2022
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 10px;">
+                    <h3>Performance</h3>
+                    <div class="review-update-form">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>TeamWork</label>
+                                <div class="rating">  
+                                    <input class="review-update-input" type="radio" name="teamwork" value="5" id="<%=review._id %>team5" <% if(review.teamwork==5){%>checked<% } %> disabled><label for="<%=review._id %>team5">☆</label>
+                                    <input class="review-update-input" type="radio" name="teamwork" value="4" id="<%=review._id %>team4" <% if(review.teamwork==4){%>checked<% } %> disabled><label for="<%=review._id %>team4">☆</label>
+                                    <input class="review-update-input" type="radio" name="teamwork" value="3" id="<%=review._id %>team3" <% if(review.teamwork==3){%>checked<% } %> disabled><label for="<%=review._id %>team3">☆</label>
+                                    <input class="review-update-input" type="radio" name="teamwork" value="2" id="<%=review._id %>team2" <% if(review.teamwork==2){%>checked<% } %> disabled><label for="<%=review._id %>team2">☆</label>
+                                    <input class="review-update-input" type="radio" name="teamwork" value="1" id="<%=review._id %>team1" <% if(review.teamwork==1){%>checked<% } %> disabled><label for="<%=review._id %>team1">☆</label>
+                                </div> 
+                            </div>
+                            <div class="col-md-3">
+                                <label>Punctuality</label>
+                                <div class="rating">
+                                    <input class="review-update-input" type="radio" name="punctuality" value="5" id="<%=review._id %>punc5" <% if(review.punctuality==5){%>checked<% } %> disabled><label for="<%=review._id %>punc5">☆</label>
+                                    <input class="review-update-input" type="radio" name="punctuality" value="4" id="<%=review._id %>punc4" <% if(review.punctuality==4){%>checked<% } %> disabled><label for="<%=review._id %>punc4" >☆</label>
+                                    <input class="review-update-input" type="radio" name="punctuality" value="3" id="<%=review._id %>punc3" <% if(review.punctuality==3){%>checked<% } %> disabled><label for="<%=review._id %>punc3">☆</label>
+                                    <input class="review-update-input" type="radio" name="punctuality" value="2" id="<%=review._id %>punc2" <% if(review.punctuality==2){%>checked<% } %> disabled><label for="<%=review._id %>punc2">☆</label>
+                                    <input class="review-update-input" type="radio" name="punctuality" value="1" id="<%=review._id %>punc1" <% if(review.punctuality==1){%>checked<% } %> disabled><label for="<%=review._id %>punc1">☆</label>
+                                </div> 
+                            </div>
+                            <div class="col-md-3">
+                                <label>Communication</label>
+                                <div class="rating">
+                                    <input class="review-update-input" type="radio" name="commskill" value="5" id="<%=review._id %>comm5" <% if(review.commskill==5){%>checked<% } %> disabled><label for="<%=review._id %>comm5">☆</label>
+                                    <input class="review-update-input" type="radio" name="commskill" value="4" id="<%=review._id %>comm4" <% if(review.commskill==4){%>checked<% } %> disabled><label for="<%=review._id %>comm4">☆</label>
+                                    <input class="review-update-input" type="radio" name="commskill" value="3" id="<%=review._id %>comm3" <% if(review.commskill==3){%>checked<% } %> disabled><label for="<%=review._id %>comm3">☆</label>
+                                    <input class="review-update-input" type="radio" name="commskill" value="2" id="<%=review._id %>comm2" <% if(review.commskill==2){%>checked<% } %> disabled><label for="<%=review._id %>comm2">☆</label>
+                                    <input class="review-update-input" type="radio" name="commskill" value="1" id="<%=review._id %>comm1" <% if(review.commskill==1){%>checked<% } %> disabled><label for="<%=review._id %>comm1">☆</label>
+                                </div> 
+                            </div>
+                            <div class="col-md-3">
+                                <label>Behaviour</label>
+                                <div class="rating">
+                                    <input class="review-update-input" type="radio" name="behaviour" value="5" id="<%=review._id %>behave5" <% if(review.behaviour==5){%>checked<% } %> disabled><label for="<%=review._id %>behave5">☆</label>
+                                    <input class="review-update-input" type="radio" name="behaviour" value="4" id="<%=review._id %>behave4" <% if(review.behaviour==4){%>checked<% } %> disabled><label for="<%=review._id %>behave4">☆</label>
+                                    <input class="review-update-input" type="radio" name="behaviour" value="3" id="<%=review._id %>behave3" <% if(review.behaviour==3){%>checked<% } %> disabled><label for="<%=review._id %>behave3">☆</label>
+                                    <input class="review-update-input" type="radio" name="behaviour" value="2" id="<%=review._id %>behave2" <% if(review.behaviour==2){%>checked<% } %> disabled><label for="<%=review._id %>behave2">☆</label>
+                                    <input class="review-update-input" type="radio" name="behaviour" value="1" id="<%=review._id %>behave1" <% if(review.behaviour==1){%>checked<% } %> disabled><label for="<%=review._id %>behave1">☆</label>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="form-outline mb-2">      
+                            <span><b>Comment:</b></span> <%= review.comment %>
+                        </div>
+                    </div>
+                    <div class="review-feedback-form">
+                        <form action="/review/feedback/add/<%=review._id%>/<%= employee.detail._id %>" method="post">
+                            <div class="row">
+                                <div class="col-2">
+                                    <h5>Add Your Feedback:</h5>
+                                </div>
+                                <div class="col-9">
+                                    <textarea name="feedback" class="form-control" placeholder="What's in Your Mind!"></textarea>
+                                </div>
+                                <div class="col-1">
+                                    <button class="btn btn-warning">ADD</button>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div></div>
+            <% } %>
+        </div>
+    <div>
 </body>
-</html>
+<script  src="/js/employee.js"></script>
