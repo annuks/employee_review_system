@@ -4,26 +4,30 @@ const mongoose = require("mongoose");
 const reviewSchema = new mongoose.Schema({
   teamwork: {
     type: Number,
-    min:3,
+    min:1,
     max:5,
     required: true,
   },
   punctuality:{
     type:Number,
-    min:3,
+    min:1,
     max:5,
     required:true,
   },
   commskill:{
     type:Number,
-    min:3,
+    min:1,
     max:5,
     required:true,
   },
   behaviour:{
     type:Number,
-    min:3,
+    min:1,
     max:5,
+    required:true,
+  },
+  comment:{
+    type:String,
     required:true,
   },
   employee:{

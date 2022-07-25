@@ -1,20 +1,4 @@
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-  integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css"
-/>
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css"
-/>
+
 <link rel="stylesheet" href="/css/admin.css" />
 
 <body>
@@ -68,7 +52,7 @@
             <td><%= user[i].detail.department %></td>
             <td><%= user[i].detail.joiningDate.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' }) %></td>
             <td><%= user[i].admin %></td>
-            <td> <a href="/employee/<%= user._id %>"><button class="btn btn-outline-danger float-end"</td></a>
+            <td> <a href="/employee/delete/<%= user[i]._id %>"><button class="btn btn-outline-danger float-end"><i class="fa-solid fa-trash"></i></button></a></td>
           </tr>
           <% } %>
         </tbody>

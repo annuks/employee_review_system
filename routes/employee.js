@@ -7,8 +7,8 @@ router.get('/',passport.checkAuthentication,employeeController.employee);
 router.get('/:id',employeeController.employeeDetail); 
 
 
-router.get('/:id/:admin',employeeController.handleAdmin);
+router.get('/change/:id/:admin',employeeController.handleAdmin);
 router.post('/update/:id',employeeController.updateEmployee);
-router.post('/delete/:id',employeeController.deleteEmployee);
+router.get('/delete/:id',employeeController.deleteEmployee);
 
 module.exports = router;

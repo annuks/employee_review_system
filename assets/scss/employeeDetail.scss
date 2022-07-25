@@ -41,7 +41,28 @@
             background: blanchedalmond;
             margin: 10px;
             padding: 10px;
-            display: flex;
+			.emp-detail{
+				display: flex;
+				justify-content: space-between;
+				.detail{
+					flex: auto;
+					margin-left: 30px;
+					color: #006cb6;
+					span{
+						color: #375f7f;
+					}
+				}
+				.other{
+					display: flex;
+					flex-direction: column;
+					.created-by{
+						color: #006cb6;
+					span{
+						color: #375f7f;
+					}
+					}
+				}
+			}
         }
     }
 }
@@ -71,31 +92,18 @@
 			position: absolute;
 			opacity: 0;
 		}
-		&:hover {
-			&:before {
-				opacity: 1 !important;
-			}
-			~ {
-				label {
-					&:before {
-						opacity: 1 !important;
-					}
-				}
-			}
-		}
-	}
-	&:hover {
-		>input {
-			&:checked {
-				~ {
-					label {
-						&:before {
-							opacity: 0.4;
-						}
-					}
-				}
-			}
-		}
+		// &:hover {
+		// 	&:before {
+		// 		opacity: 1 !important;
+		// 	}
+		// 	~ {
+		// 		label {
+		// 			&:before {
+		// 				opacity: 1 !important;
+		// 			}
+		// 		}
+		// 	}
+		// }
 	}
 }
 

@@ -5,9 +5,9 @@
         <!-- admin button -->
         <div id="make-admin">
             <% if( employee.admin ) {%>
-            <a href="/employee/<%= employee._id %>/false"><button class="btn btn-warning float-end">Remove Admin</button></a>
+            <a href="/employee/change/<%= employee._id %>/false"><button class="btn btn-warning float-end">Remove Admin</button></a>
             <% }else{ %>
-            <a href="/employee/<%= employee._id %>/true"><button class="btn btn-success float-end">Make Admin</button></a>
+            <a href="/employee/change/<%= employee._id %>/true"><button class="btn btn-success float-end">Make Admin</button></a>
             <% } %>
         </div>
 
@@ -139,7 +139,7 @@
                     </div>
 
                     <div class="form-outline mb-2">      
-                        <textarea class="form-control" placeholder="Write Something"></textarea>
+                        <textarea class="form-control" name="comment" placeholder="Write Something" required></textarea>
                     </div>
                     <div style="height:30px;">
                         <button class="btn btn-primary float-end">Submit</button>
@@ -153,22 +153,138 @@
       
         <div id="performance-view-container">
             <h3>Performances</h3>
+            <% for(review of employee.detail.reviews) { %>
             <div class="performance-box">
-                <div>
-                    Name : Annu Kumar Singh<br>
-                    Email : annu@gmail.comm<br>
-                    Gender : Male<br>
-                    Department : HR<br>
+                <div class="emp-detail">
+                    <div><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="profile" width="100px"></div>
+                    <div class="detail">
+                        <span>Name : </span><%=employee.name %><br>
+                        <span>Email :</span> <%=employee.email %><br>
+                        <span>Gender :</span> <%=employee.detail.gender %><br>
+                        <span>Department :</span> <%=employee.detail.department%><br>
+                    </div>
+                    <div class="other">
+                        <div>
+                            <button class="btn btn-success" style="margin-right: 5px;">Assign</button>
+                            <button class="btn btn-warning" style="margin-right: 5px;"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <a href="/review/delete/<%=review._id %>"><button class="btn btn-outline-danger float-end"><i class="fa-solid fa-trash"></i></button></a>
+                        </div>
+                        <div class="created-by">
+                            <span>Created By :</span> Admin<br>
+                            <span>On :</span>12 July , 2022
+                        </div>
+                    </div>
                 </div>
-                <div style="margin-left: 30px;">
-                    TeamWork : 5<br>
-                    Punctuality : 3<br>
-                    Communication : 2<br>
-                    Behaviour : 4<br>
+                <div style="margin-top: 10px;">
+                    <h3>Performance</h3>
+                    <div class="review-update-form">
+                        <form action="/review/update/<%=review._id %>" method="post">
+                           <div class="row">
+                                <div class="col-md-3">
+                                    <label>TeamWork</label>
+                                    <div class="rating">  
+                                        <input type="radio" name="teamwork" value="5" id="<%=review._id %>team5" <% if(review.teamwork==5){%>checked<% } %> ><label for="<%=review._id %>team5">☆</label>
+                                        <input type="radio" name="teamwork" value="4" id="<%=review._id %>team4" <% if(review.teamwork==4){%>checked<% } %>><label for="<%=review._id %>team4">☆</label>
+                                        <input type="radio" name="teamwork" value="3" id="<%=review._id %>team3" <% if(review.teamwork==3){%>checked<% } %>><label for="<%=review._id %>team3">☆</label>
+                                        <input type="radio" name="teamwork" value="2" id="<%=review._id %>team2" <% if(review.teamwork==2){%>checked<% } %>><label for="<%=review._id %>team2">☆</label>
+                                        <input type="radio" name="teamwork" value="1" id="<%=review._id %>team1" <% if(review.teamwork==1){%>checked<% } %>><label for="<%=review._id %>team1">☆</label>
+                                    </div> 
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Punctuality</label>
+                                    <div class="rating">
+                                        <input type="radio" name="punctuality" value="5" id="<%=review._id %>punc5" <% if(review.punctuality==5){%>checked<% } %> disabled><label for="<%=review._id %>punc5">☆</label>
+                                        <input type="radio" name="punctuality" value="4" id="<%=review._id %>punc4" <% if(review.punctuality==4){%>checked<% } %> disabled><label for="<%=review._id %>punc4" >☆</label>
+                                        <input type="radio" name="punctuality" value="3" id="<%=review._id %>punc3" <% if(review.punctuality==3){%>checked<% } %> disabled><label for="<%=review._id %>punc3">☆</label>
+                                        <input type="radio" name="punctuality" value="2" id="<%=review._id %>punc2" <% if(review.punctuality==2){%>checked<% } %> disabled><label for="<%=review._id %>punc2">☆</label>
+                                        <input type="radio" name="punctuality" value="1" id="<%=review._id %>punc1" <% if(review.punctuality==1){%>checked<% } %> disabled><label for="<%=review._id %>punc1">☆</label>
+                                    </div> 
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Communication</label>
+                                    <div class="rating">
+                                        <input type="radio" name="commskill" value="5" id="<%=review._id %>comm5" <% if(review.commskill==5){%>checked<% } %>><label for="<%=review._id %>comm5">☆</label>
+                                        <input type="radio" name="commskill" value="4" id="<%=review._id %>comm4" <% if(review.commskill==4){%>checked<% } %>><label for="<%=review._id %>comm4">☆</label>
+                                        <input type="radio" name="commskill" value="3" id="<%=review._id %>comm3" <% if(review.commskill==3){%>checked<% } %>><label for="<%=review._id %>comm3">☆</label>
+                                        <input type="radio" name="commskill" value="2" id="<%=review._id %>comm2" <% if(review.commskill==2){%>checked<% } %>><label for="<%=review._id %>comm2">☆</label>
+                                        <input type="radio" name="commskill" value="1" id="<%=review._id %>comm1" <% if(review.commskill==1){%>checked<% } %>><label for="<%=review._id %>comm1">☆</label>
+                                    </div> 
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Behaviour</label>
+                                    <div class="rating">
+                                        <input type="radio" name="behaviour" value="5" id="<%=review._id %>behave5" <% if(review.behaviour==5){%>checked<% } %>><label for="<%=review._id %>behave5">☆</label>
+                                        <input type="radio" name="behaviour" value="4" id="<%=review._id %>behave4" <% if(review.behaviour==4){%>checked<% } %>><label for="<%=review._id %>behave4">☆</label>
+                                        <input type="radio" name="behaviour" value="3" id="<%=review._id %>behave3" <% if(review.behaviour==3){%>checked<% } %>><label for="<%=review._id %>behave3">☆</label>
+                                        <input type="radio" name="behaviour" value="2" id="<%=review._id %>behave2" <% if(review.behaviour==2){%>checked<% } %>><label for="<%=review._id %>behave2">☆</label>
+                                        <input type="radio" name="behaviour" value="1" id="<%=review._id %>behave1" <% if(review.behaviour==1){%>checked<% } %>><label for="<%=review._id %>behave1">☆</label>
+                                    </div> 
+                                </div>
+                            </div>
+        
+                            <div class="form-outline mb-2">      
+                                <textarea class="form-control" name="comment" placeholder="Write Something"><%= review.comment %></textarea>
+                            </div>
+                            <div style="height:30px;">
+                                <button class="btn btn-primary float-end">Submit</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
+            <% } %>
         </div>
 
-
+        <!-- Performence Review Assignment -->
+        <div id="assigningReview">
+            <h3>
+                Assign
+            </h3><hr>
+            <table id="table_id" class="display">
+                <thead>
+                  <tr>
+                    <th>Sn.</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Assign</th>
+                    <!-- <th>Remove</th> -->                   
+                  </tr>
+                </thead>
+                <!-- table body -->
+                <tbody>
+                    <tr>
+                        <th>1</th>
+                        <th>Gaurav</th>
+                        <th>gaurav@gmail.com</th>
+                        <th>HR</th>
+                        <th><button class="btn btn-secondary">Assign</button></th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"
+></script>
+<script
+  type="text/javascript"
+  charset="utf8"
+  src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"
+></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $("#table_id").DataTable({
+      dom: "Blfrtip",
+      lengthMenu: [
+        [10, 25, 50, -1],
+        [10, 25, 50, "All"],
+      ],
+      buttons: ["csv"],
+    });
+  });
+</script>
