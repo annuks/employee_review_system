@@ -57,8 +57,9 @@ module.exports.create = (req, res) => {
           gender : req.body.gender
         },(err,employe)=>{
           user.detail = employe._id;
-          user.save;
+          user.save();
         })
+        req.flash("success", "Your account hasbeen created");
         return res.redirect("/user/sign_in");
       });
     } else {
@@ -79,7 +80,7 @@ module.exports.createSession =  (req, res) => {
 
 module.exports.destroySession =  (req, res) => {
   req.logout(()=>{
-    req.flash("success", " You have been Logged out Successfully");  
+    req.flash("success", " You have been Logged out");  
     return res.redirect("/");
   });
 }

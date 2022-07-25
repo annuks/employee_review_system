@@ -1,7 +1,7 @@
-const mogoose = require("mongoose");
+const mongoose = require("mongoose");
 
 
-const userSchema = new mogoose.Schema({
+const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -24,11 +24,11 @@ const userSchema = new mogoose.Schema({
     default : false
   },
   detail : {
-    type : mogoose.Schema.Types.ObjectId,
+    type : mongoose.Schema.Types.ObjectId,
     ref : 'Employee'
   }
 },{
     timestamps: true
 });
-const User = mogoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
 module.exports = User;

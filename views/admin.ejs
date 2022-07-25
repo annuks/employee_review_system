@@ -46,27 +46,31 @@
           <tr>
             <th>Sn.</th>
             <th>Name</th>
+            <th>Gender</th>
             <th>Email</th>
             <th>Department</th>
-            <th>Modify</th>
+            <th>Date of Joining</th>
+            <th>Admin</th>
+            <!-- <th>Remove</th> -->
+            
+            
           </tr>
         </thead>
         <!-- table body -->
         <tbody>
+
+          <% for( i = 0; i<user.length ; i++) {%>
           <tr>
-            <td>1</td>
-            <td><a href="/employee/345">Annu Kumar Singh</a></td>
-            <td>annu@gmail.com</td>
-            <td>HR</td>
-            <td><button>Edit</button></td>
+            <td><% index = i + 1 %><%= index %></td>
+            <td><a href="/employee/<%= user[i]._id %>"><%= user[i].name %></a></td>
+            <td><%= user[i].detail.gender %></td>
+            <td><%= user[i].email %></td>
+            <td><%= user[i].detail.department %></td>
+            <td><%= user[i].detail.joiningDate.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' }) %></td>
+            <td><%= user[i].admin %></td>
+            <td> <a href="/employee/<%= user._id %>"><button class="btn btn-outline-danger float-end"</td></a>
           </tr>
-          <tr>
-            <td>1</td>
-            <td><a href="/employee/123">Ankit Singh</a></td>
-            <td>akit@gmail.com</td>
-            <td>Bhedua</td>
-            <td><button>Edit</button></td>
-          </tr>
+          <% } %>
         </tbody>
       </table>
     </div>

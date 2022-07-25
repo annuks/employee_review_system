@@ -1,11 +1,174 @@
-<!DOCTYPE html>
-<head>
-    <title>
-        <%= title %>
-    </title>
-</head>
+<link rel="stylesheet" href="/css/employeeDetail.css" />
 <body>
-    <h1> Employee Details</h1>
+    <div id="main-container">
 
+        <!-- admin button -->
+        <div id="make-admin">
+            <% if( employee.admin ) {%>
+            <a href="/employee/<%= employee._id %>/false"><button class="btn btn-warning float-end">Remove Admin</button></a>
+            <% }else{ %>
+            <a href="/employee/<%= employee._id %>/true"><button class="btn btn-success float-end">Make Admin</button></a>
+            <% } %>
+        </div>
+
+        <!-- start: empoyee container  -->
+        <div id="employee-conainer">
+            <button class="btn btn-outline-primary float-end">Edit</button>
+            <h2>Employee Details</h2>
+            <div id="employee-detail">
+                <form action="/employee/update/<%= employee._id %>" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-outline mb-2">
+                                <label class="form-label" >Name</label>
+                                <input type="text" name="name" class="form-control" placeholder="Employee Name" value="<%=employee.name %>" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-outline mb-2">      
+                                <label class="form-label" >Email</label>
+                                <input type="email" name="email"  placeholder="Employee Email"  class="form-control" value="<%=employee.email %>"/>
+                            </div>
+                        </div>
+              
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-outline mb-2">
+                            <label class="form-label" >Gender</label>
+                            <select class="form-select" name="gender" >
+                                <option value="none" selected disabled hidden>
+                                    <% if(employee.detail.gender == 'female'){ %>
+                                        Female
+                                    <% }else { %> 
+                                        Male
+                                    <%}%>
+                                </option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>   
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-outline mb-2">
+                            <label class="form-label">Joning Date</label>
+                            <input class="form-control" type="date" name="joining" value="<%= employee.detail.joiningDate.toLocaleDateString("af-ZA") %>"/>    
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-outline mb-2">
+                                <label class="form-label">Department</label>
+                                <select class="form-select"  name="department">
+                                    <option value="none" selected disabled hidden><%=employee.detail.department %></option>
+                                    <option value="HR">HR</option>
+                                    <option value="Sales">Sales</option>
+                                    <option value="Production">Production</option>
+                                    <option value="Marketting">Marketting</option>
+                                    <option value="Operation">Operation</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+              
+                    <!-- Submit button -->
+                    <div>
+                        <button type="submit" class="btn btn-info float-end">
+                            Update
+                        </button>
+                    </div>
+                    </div></form>
+                  
+        </div>
+        </div>
+        <!-- employee review  form  -->
+        <div id="employee-review-form-container">
+            <div id="add-review-button">
+                <button class="btn btn-warning">Create Performance Review</button>
+            </div>
+
+            <!-- form -->
+            <div id="review-form">
+                <div id="form-heading">
+                    <button class="btn btn-outline-danger float-end">X</button>
+                    <h3>Performance Review Form</h3><hr>
+                </div>
+                <form action="/review/add" method="post">
+                    <input type="text" name="employee" value="<%=employee.detail._id%>" hidden>
+                    <input type="text" name="createdBy" value="<%=user._id %>" hidden>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>TeamWork</label>
+                            <div class="rating">
+                                <input type="radio" name="teamwork" value="5" id="team5"><label for="team5">☆</label>
+                                <input type="radio" name="teamwork" value="4" id="team4"><label for="team4">☆</label>
+                                <input type="radio" name="teamwork" value="3" id="team3"><label for="team3">☆</label>
+                                <input type="radio" name="teamwork" value="2" id="team2"><label for="team2">☆</label>
+                                <input type="radio" name="teamwork" value="1" id="team1"><label for="team1">☆</label>
+                            </div> 
+                        </div>
+                        <div class="col-md-3">
+                            <label>Punctuality</label>
+                            <div class="rating">
+                                <input type="radio" name="punctuality" value="5" id="punc5"><label for="punc5">☆</label>
+                                <input type="radio" name="punctuality" value="4" id="punc4"><label for="punc4">☆</label>
+                                <input type="radio" name="punctuality" value="3" id="punc3"><label for="punc3">☆</label>
+                                <input type="radio" name="punctuality" value="2" id="punc2"><label for="punc2">☆</label>
+                                <input type="radio" name="punctuality" value="1" id="punc1"><label for="punc1">☆</label>
+                            </div> 
+                        </div>
+                        <div class="col-md-3">
+                            <label>Communication</label>
+                            <div class="rating">
+                                <input type="radio" name="commskill" value="5" id="comm5"><label for="comm5">☆</label>
+                                <input type="radio" name="commskill" value="4" id="comm4"><label for="comm4">☆</label>
+                                <input type="radio" name="commskill" value="3" id="comm3"><label for="comm3">☆</label>
+                                <input type="radio" name="commskill" value="2" id="comm2"><label for="comm2">☆</label>
+                                <input type="radio" name="commskill" value="1" id="comm1"><label for="comm1">☆</label>
+                            </div> 
+                        </div>
+                        <div class="col-md-3">
+                            <label>Behaviour</label>
+                            <div class="rating">
+                                <input type="radio" name="behaviour" value="5" id="behave5"><label for="behave5">☆</label>
+                                <input type="radio" name="behaviour" value="4" id="behave4"><label for="behave4">☆</label>
+                                <input type="radio" name="behaviour" value="3" id="behave3"><label for="behave3">☆</label>
+                                <input type="radio" name="behaviour" value="2" id="behave2"><label for="behave2">☆</label>
+                                <input type="radio" name="behaviour" value="1" id="behave1"><label for="behave1">☆</label>
+                            </div> 
+                        </div>
+                    </div>
+
+                    <div class="form-outline mb-2">      
+                        <textarea class="form-control" placeholder="Write Something"></textarea>
+                    </div>
+                    <div style="height:30px;">
+                        <button class="btn btn-primary float-end">Submit</button>
+                    </div>
+                </form>
+            </div>
+
+
+
+        </div>
+      
+        <div id="performance-view-container">
+            <h3>Performances</h3>
+            <div class="performance-box">
+                <div>
+                    Name : Annu Kumar Singh<br>
+                    Email : annu@gmail.comm<br>
+                    Gender : Male<br>
+                    Department : HR<br>
+                </div>
+                <div style="margin-left: 30px;">
+                    TeamWork : 5<br>
+                    Punctuality : 3<br>
+                    Communication : 2<br>
+                    Behaviour : 4<br>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
 </body>
-</html>

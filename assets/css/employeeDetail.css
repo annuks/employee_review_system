@@ -1,0 +1,58 @@
+#main-container #make-admin {
+  margin: 25px;
+  height: 20px;
+  position: relative; }
+
+#main-container #employee-conainer {
+  padding: 25px;
+  background: lavender;
+  margin: 25px;
+  border-radius: 10px; }
+  #main-container #employee-conainer h2 {
+    color: cadetblue; }
+  #main-container #employee-conainer #employee-detail form label {
+    font-weight: bold; }
+
+#main-container #employee-review-form-container {
+  margin: 25px; }
+  #main-container #employee-review-form-container #add-review-button {
+    text-align: center;
+    margin: 10px; }
+  #main-container #employee-review-form-container #review-form {
+    background: lavender;
+    padding: 25px; }
+
+#main-container #performance-view-container {
+  background: lavender;
+  margin: 25px;
+  padding: 25px;
+  border-radius: 10px; }
+  #main-container #performance-view-container .performance-box {
+    background: blanchedalmond;
+    margin: 10px;
+    padding: 10px;
+    display: flex; }
+
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end; }
+  .rating > input {
+    display: none; }
+    .rating > input:checked ~ label:before {
+      opacity: 1; }
+  .rating > label {
+    position: relative;
+    font-size: x-large;
+    color: #006cb6;
+    cursor: pointer; }
+    .rating > label::before {
+      content: "\2605";
+      position: absolute;
+      opacity: 0; }
+    .rating > label:hover:before {
+      opacity: 1 !important; }
+    .rating > label:hover ~ label:before {
+      opacity: 1 !important; }
+  .rating:hover > input:checked ~ label:before {
+    opacity: 0.4; }

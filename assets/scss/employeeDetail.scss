@@ -1,0 +1,101 @@
+#main-container{
+    #make-admin{
+        margin: 25px;
+        height: 20px;
+        position: relative;
+    }
+    #employee-conainer{
+        padding: 25px;
+        background: lavender;
+        margin: 25px;
+        border-radius: 10px;
+        h2{
+            color: cadetblue;
+        }
+        #employee-detail{
+            form{
+               label{
+                font-weight: bold;
+               }
+            }
+        }
+    }
+
+    #employee-review-form-container{
+        margin: 25px;
+        #add-review-button{
+            text-align: center;
+            margin: 10px;
+        }
+        #review-form{
+            background: lavender;
+            padding: 25px;
+        }
+    }
+    #performance-view-container{
+        background: lavender;
+        margin: 25px;
+        padding: 25px;
+        border-radius: 10px;
+        .performance-box{
+            background: blanchedalmond;
+            margin: 10px;
+            padding: 10px;
+            display: flex;
+        }
+    }
+}
+.rating {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: flex-end;
+	>input {
+		display: none;
+		&:checked {
+			~ {
+				label {
+					&:before {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+	>label {
+		position: relative;
+		font-size: x-large;
+		color: #006cb6;
+		cursor: pointer;
+		&::before {
+			content: "\2605";
+			position: absolute;
+			opacity: 0;
+		}
+		&:hover {
+			&:before {
+				opacity: 1 !important;
+			}
+			~ {
+				label {
+					&:before {
+						opacity: 1 !important;
+					}
+				}
+			}
+		}
+	}
+	&:hover {
+		>input {
+			&:checked {
+				~ {
+					label {
+						&:before {
+							opacity: 0.4;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+

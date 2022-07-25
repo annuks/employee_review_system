@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const app = express();
 const PORT = 8000;
@@ -58,7 +59,7 @@ app.use(session({
   },
   store: MongoStore.create(
     {
-      mongoUrl : 'mongodb://localhost/employee_review_system',
+      mongoUrl : process.env.DB,
       autoRemove: "disabled",
     },
     function (err) {
